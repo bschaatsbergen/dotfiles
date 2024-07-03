@@ -96,6 +96,7 @@ return {
             -- Adding an LSP server here configures it automatically.
             local lsp_servers = {
                 gopls = {},
+                terraformls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
