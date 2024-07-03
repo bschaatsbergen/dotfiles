@@ -2,6 +2,12 @@
 program = "/opt/homebrew/bin/fish"
 args    = ["--login", "--interactive", "--command", "tmux new-session -A -D"]
 
+[keyboard]
+bindings = [
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+]
+
 [font]
 size = 16.0
 
@@ -34,3 +40,4 @@ magenta = "#d3869b"
 red     = "#fb4934"
 white   = "#ebdbb2"
 yellow  = "#fabd2f"
+
