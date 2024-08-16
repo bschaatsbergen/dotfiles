@@ -8,7 +8,7 @@ return {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
-                -- Skip installation is make isn't installed.
+                -- Skip installation if make isn't installed.
                 cond = function()
                     return vim.fn.executable "make" == 1
                 end,
@@ -17,6 +17,15 @@ return {
         },
         config = function()
             require("telescope").setup({
+                defaults = {
+                    file_ignore_patterns = {
+                        "%.git/",          -- Exclude .git folder
+                        "%.terraform/",    -- Exclude .terraform folder
+                        "node_modules/",   -- Exclude node_modules folder
+                        "__pycache__/",    -- Exclude __pycache__ folder
+                        "venv/",           -- Exclude virtual environments
+                    },
+                },
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown(),
@@ -34,9 +43,11 @@ return {
             vim.keymap.set("n", "<Leader>sk", require("telescope.builtin").keymaps, {
                 desc = "Search keymaps"
             })
-            vim.keymap.set("n", "<Leader>sf", require("telescope.builtin").find_files, {
-                desc = "Search files"
-            })
+            vim.keymap.set("n", "<Leader>sf", function()
+                require("telescope.builtin").find_files({
+                    hidden = true,  -- Show hidden files
+                })
+            end, { desc = "Search files" })
             vim.keymap.set("n", "<Leader>ss", require("telescope.builtin").builtin, {
                 desc = "Search builtin"
             })
@@ -73,7 +84,6 @@ return {
                 function()
                     require("telescope.builtin").live_grep({
                         grep_open_files = true,
-                        -- prompt_title = "Live Grep in Open Files",
                     })
                 end,
                 { desc = "Search in open files" }
@@ -83,6 +93,7 @@ return {
                 function()
                     require("telescope.builtin").find_files({
                         cwd = vim.fn.stdpath("config"),
+                        hidden = true,  -- Show hidden files in config directory
                     })
                 end,
                 { desc = "Search Neovim files" }

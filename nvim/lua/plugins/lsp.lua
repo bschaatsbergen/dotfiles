@@ -27,12 +27,12 @@ return {
                         desc = "Go to references",
                     })
 
-                    vim.keymap.set("n", "gI", require("telescope.builtin").lsp_implementations, {
+                    vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, {
                         buffer = event.buf,
                         desc = "Go to implementation",
                     })
 
-                    vim.keymap.set("n", "<Leader>D", require("telescope.builtin").lsp_type_definitions, {
+                    vim.keymap.set("n", "<Leader>gd", require("telescope.builtin").lsp_type_definitions, {
                         buffer = event.buf,
                         desc = "Go to type definition",
                     })
@@ -47,7 +47,7 @@ return {
                         desc = "Search workspace symbols",
                     })
 
-                    vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, {
+                    vim.keymap.set("n", "rn", vim.lsp.buf.rename, {
                         buffer = event.buf,
                         desc = "Rename variable",
                     })
