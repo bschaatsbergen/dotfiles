@@ -1,6 +1,6 @@
 [shell]
-program = "/opt/homebrew/bin/fish"
-args    = ["--login", "--interactive", "--command", "tmux new-session -A -D"]
+program = "/bin/zsh"
+args = ["--login", "-c", "tmux new-session -A -D"]
 
 [keyboard]
 bindings = [
