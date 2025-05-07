@@ -1,4 +1,4 @@
-command = /bin/zsh --login  -c 'tmux new-session -A -D'
+command = /opt/homebrew/bin/nu --login  -c 'tmux new-session -A -D'
 
 # Whether to prompt before closing.
 confirm-close-surface = false
